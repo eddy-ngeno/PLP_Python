@@ -1,31 +1,30 @@
-with open("input.txt", "w") as file:
-    file.write("Python is a powerful programming language.\n")
-    file.write("It is widely used in data science and AI.\n")
-    file.write("Files can be read and written easily in Python.\n")
-    file.write("This is an example of file handling.\n")
-    file.write("Enjoy learning Python step by step.\n")
+def modify_text(text):
+    
+    lines = text.splitlines()
+    modified_lines = [line.lower()[::-1] for line in lines]
+    return "\n".join(modified_lines)
 
-def process_file():
+def read_and_write_file():
+    filename = input("Enter the filename to read from (e.g., input.txt): ")
+
     try:
-        # Step 1: Read contents
-        with open("input.txt", "r") as infile:
+        
+        with open(filename, "r") as infile:
             content = infile.read()
 
-        # Step 2: Count words
-        word_count = len(content.split())
+        
+        modified_content = modify_text(content)
 
-        # Step 3: Convert text to uppercase
-        upper_content = content.upper()
+        
+        with open("modified_output.txt", "w") as outfile:
+            outfile.write(modified_content)
 
-        # Step 4: Write to output.txt
-        with open("output.txt", "w") as outfile:
-            outfile.write(upper_content)
-            outfile.write(f"\n\nWORD COUNT: {word_count}")
-
-        # Step 5: Success message
-        print("✅ output.txt created successfully with processed text and word count.")
+        print("✅ File processed successfully! Output written to modified_output.txt")
 
     except FileNotFoundError:
-        print("❌ input.txt not found. Please create it first.")
+        print("❌ Error: The file does not exist.")
+    except IOError:
+        print("❌ Error: Could not read the file due to an I/O issue.")
 
-process_file()
+
+read_and_write_file()
