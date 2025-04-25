@@ -1,4 +1,3 @@
-# This part creates input.txt with 5+ lines of text
 with open("input.txt", "w") as file:
     file.write("Python is a powerful programming language.\n")
     file.write("It is widely used in data science and AI.\n")
@@ -6,8 +5,6 @@ with open("input.txt", "w") as file:
     file.write("This is an example of file handling.\n")
     file.write("Enjoy learning Python step by step.\n")
 
-
-# Read input.txt, process text, and write results to output.txt
 def process_file():
     try:
         # Step 1: Read contents
@@ -31,5 +28,4 @@ def process_file():
     except FileNotFoundError:
         print("❌ input.txt not found. Please create it first.")
 
-# Run the function
 process_file()
